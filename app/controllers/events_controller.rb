@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
   def index
-    #@events = Event.all   
-    @events = Event.where('starts_at >= ?', Date.today)
+    
+    if params[:keyword].present?
+      @events = Event.where('name LIKE ?', "%{params[:keyword]}%")
+    else
+      @events = Event.where('starts_at >= ?', Date.today)
+    end
+
   end
 
   def show
