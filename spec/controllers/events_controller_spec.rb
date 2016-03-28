@@ -5,7 +5,7 @@ RSpec.describe EventsController, type: :controller do
     before do 
       venue = Venue.create!(name: 'HCM Opera')
       category = Category.create!(name: 'Entertainment')
-      attrs = { extended_html_description: 'extended_html_description', venue: venue, category: category }
+      attrs = { extended_html_description: 'extended_html_description', venue: venue, category: category, published_at: 3.days.ago }
 
       @event1 = Event.create!(attrs.merge(name: 'Random event1', starts_at: 1.day.ago))
       @event2 = Event.create!(attrs.merge(name: 'Event2', starts_at: 1.day.from_now))

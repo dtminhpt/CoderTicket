@@ -7,6 +7,7 @@ class EventsController < ApplicationController
     else
       @events = Event.where('starts_at >= ?', Date.today)
     end
+    @events = @events.where('published_at IS NOT NULL')
 
   end
 
@@ -40,7 +41,7 @@ class EventsController < ApplicationController
   end 
 
   def update 
-    @events = current_user.events.find(params[:id])
+    @event = current_user.events.find(params[:id])
 
     if @event.update_attributes(event_params)
       flash[:success] = 'The event has been updated successfully.'
