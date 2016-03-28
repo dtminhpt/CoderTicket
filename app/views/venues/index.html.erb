@@ -1,0 +1,21 @@
+<h1>List of venues</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Full Address</th>
+      <th>Region</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @venues.each do |venue| %>
+      <tr>
+        <td><%= venue.name %></td>
+        <td><%= venue.full_address %></td>
+        <td><%= venue.region.try :name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
