@@ -1,7 +1,9 @@
 <h1>Your created events</h1>
 
-<table class="table table-striped">
-  <thead>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead thead-default">
+  
     <tr>
       <th>Name</th>
       <th>Category</th>
@@ -14,6 +16,7 @@
 
   <tbody>
     <% @events.each do |event| %>
+    <tr>
       <td><%= event.name %></td>
       <td><%= event.category.name %></td>
       <td><%= event.starts_at %></td>
@@ -22,15 +25,16 @@
       <td>
         <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-warning' %>
         <% if event.ticket_types.count > 0 %>
-          <%= link_to "Published event", publish_event_path(event), method: :put, class: 'btn btn-primary' %>
+          <%= link_to "Publish event", publish_event_path(event), method: :put, class: 'btn btn-primary' %>
         <% else %>
           <%= link_to "Create ticket types", new_event_ticket_type_path(event), class: 'btn btn-primary' %>
         <% end %>
       </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
 
-
 <%= link_to 'New Event', new_event_path, class: 'nav-link' %>
+
       
