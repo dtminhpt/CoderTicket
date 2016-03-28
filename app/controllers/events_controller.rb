@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :list]
 
   def index
-    
     if params[:keyword].present?
       @events = Event.where('name LIKE ?', "%#{params[:keyword]}%")
     else
@@ -10,6 +9,10 @@ class EventsController < ApplicationController
     end
 
   end
+
+  def list
+    @events = current_user.events 
+  end 
 
   def show
     @event = Event.find(params[:id])

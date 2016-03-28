@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
+  get 'venues/index'
+
+  get 'venues/new'
+
   devise_for :users
   root 'events#index'
 
   resources :events do
     resources :tickets
+    collection do
+      get :list
+    end
   end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

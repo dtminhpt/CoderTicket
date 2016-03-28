@@ -1,0 +1,23 @@
+<h1>Your created events</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Starts at</th>
+      <th>Ends at</th>
+      <th>Venue</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <td><%= event.name %></td>
+      <td><%= event.category.name %></td>
+      <td><%= event.starts_at %></td>
+      <td><%= event.ends_at %></td>
+      <td><%= event.venue.name %></td>
+    <% end %>
+  </tbody>
+</table>
