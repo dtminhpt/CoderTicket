@@ -6,8 +6,9 @@
       <th>Name</th>
       <th>Category</th>
       <th>Starts at</th>
-      <th>Ends at</th>
+      <th>Publishes at</th>
       <th>Venue</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -16,8 +17,16 @@
       <td><%= event.name %></td>
       <td><%= event.category.name %></td>
       <td><%= event.starts_at %></td>
-      <td><%= event.ends_at %></td>
+      <td><%= event.published_at %></td>
       <td><%= event.venue.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-warning' %>
+        <% if event.ticket_types.count > 0 %>
+          <%= link_to "Published event", publish_event_path(event), method: :put, class: 'btn btn-primary' %>
+        <% else %>
+          <%= link_to "Create ticket types", new_event_ticket_type_path(event), class: 'btn btn-primary' %>
+        <% end %>
+      </td>
     <% end %>
   </tbody>
 </table>

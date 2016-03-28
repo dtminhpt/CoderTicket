@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     collection do
       get :list
     end
+    member do
+      put :publish
+    end
   end
 
   resources :venues

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :list]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :list, :publish]
 
   def index
     if params[:keyword].present?
@@ -12,6 +12,19 @@ class EventsController < ApplicationController
 
   def list
     @events = current_user.events 
+  end 
+
+  def publish
+    @event = current_user.events.find(params[:id])
+
+    if @event.ticket_types.count > 0
+      @event.update_attributes!(published_at: Time.now)
+      flash[:success] = 'The event has been published successfully.'
+      redirect_to event_path(@event)
+    else
+      flash[:error] = 'Cannot publish an event without ticket types.'
+      redirect_to event_path(@event)
+    end
   end 
 
   def show
