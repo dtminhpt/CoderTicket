@@ -21,27 +21,34 @@
 
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-11 col-md-offset-1">  
-      <table class="table">
-        <th> Ticket Type </th>
-        <th> Unit Price </th>
-        <th> Quantity </th>
-      
-        <% @event.ticket_types.each do |type| %>
-        <tr>
-          <td> <%= type.name %> </td>
-          <td> <%= number_to_currency(type.price, unit: 'VND ', precision: 0) %> </td>
-          <td> <%= select_tag('quantity', options_for_select(0..10)) %></td> 
-        </tr>
-        <% end %> 
-      </table>
+  <%= form_tag event_tickets_path(@event) do %>
+    <div class="row">
+      <div class="col-md-11 col-md-offset-1">  
+        <table class="table">
+          <th> Ticket Type </th>
+          <th> Unit Price </th>
+          <th> Quantity </th>
+        
+          <% @event.ticket_types.each do |type| %>
+          <tr>
+            <td> <%= type.name %> </td>
+            <td> <%= number_to_currency(type.price, unit: 'VND ', precision: 0) %> </td>
+            <td><%= select_tag("[type_quantities][#{type.id}]", options_for_select(0..[type.max_quantity, 10].min)) %>
+            </td>
+            <td>
+              <% ticket_quantity = @tickets.select { |ticket| ticket.ticket_type_id == type.id }.sum(&:quantity) %>
+              <%= pluralize ticket_quantity, 'ticket' %>
+            </td>
+          </tr>
+          <% end %> 
+        </table>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2 col-md-offset-5">
-      <button class="btn btn-success btn-lg btn-block"> Buy </button>
-    </div>
-  <div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-5">
+        <button class="btn btn-success btn-lg btn-block"> Buy </button>
+      </div>
+    <div>
+  <% end %>
 </div>  
 
