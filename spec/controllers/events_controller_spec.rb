@@ -24,12 +24,11 @@ RSpec.describe EventsController, type: :controller do
 
     it "loads all of the upcoming events into @events" do
       get :index
-
-      expect(assigns(:events)).to eq([event2])
+      expect(assigns(:events)).to eq([@event2])
     end
 
     it "searches events with keyword" do 
-      get: index, keyword: 'Random'
+      get :index, keyword: 'Random'
       expect(assigns(:events)).to eq([@event1])
     end 
   end
