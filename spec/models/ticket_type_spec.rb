@@ -11,7 +11,7 @@ RSpec.describe TicketType, type: :model do
       type1 = event.ticket_types.create! price: 1.00
       type2 = event.ticket_types.create price: 1.00
 
-      expect(type2.errors).to eq ""
+      expect(type2.errors.to_a).to include("cannot have duplicates")
     end 
   end
 end
