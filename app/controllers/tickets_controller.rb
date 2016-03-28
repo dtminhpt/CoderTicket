@@ -9,7 +9,7 @@ class TicketsController < ApplicationController
       redirect_to event_path(@event)
     else
       @tickets = Ticket.where(user: current_user, event: @event)
-    end 
+    end
   end
 
   def create
@@ -18,7 +18,6 @@ class TicketsController < ApplicationController
       Ticket.create!(user: current_user, event: @event, ticket_type_id: type_id, quantity: quantity) if quantity.to_i > 0
     end
     flash[:success] = "Thank you for buying the event tickets."
-    redirect_to new_event_ticket_path(@event)
-  end 
-
+    redirect_to event_path(@event)
+  end
 end
