@@ -1,0 +1,6 @@
+<%= simple_form_for [@event, @ticket_type] do |f| %>
+  <%= f.input :name%>
+  <%= f.input :price, as: :integer %>
+  <%= f.input :max_quantity, as: :integer %>
+  <%= f.button :submit %>
+<% end %>

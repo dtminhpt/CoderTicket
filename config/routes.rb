@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'ticket_types/new'
+
   get 'venues/index'
 
   get 'venues/new'
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   root 'events#index'
 
   resources :events do
+    resources :ticket_types
     resources :tickets
     collection do
       get :list
