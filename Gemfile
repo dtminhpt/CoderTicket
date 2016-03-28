@@ -58,3 +58,12 @@ gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 gem 'devise'
 gem 'simplecov', :require => false, :group => :test
 
+
+
+group :production do
+  gem 'rails_12factor'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+end
