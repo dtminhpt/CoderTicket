@@ -8,7 +8,9 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+  <%= render 'layouts/messages' %>
+
+  <nav class="navbar navbar-dark bg-inverse">
     <a class="navbar-brand" href="<%= root_path %>">Coder Ticket</a>
     <ul class="nav navbar-nav">
       <% if user_signed_in? %>
