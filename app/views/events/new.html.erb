@@ -1,0 +1,12 @@
+<h1>New Event</h1>
+
+<%= simple_form_for @event do |f| %>
+  <%= f.association :category %>
+  <%= f.input :name %>
+  <%= f.input :extended_html_description, as: :text %>
+  <%= f.input :hero_image_url %>
+  <%= f.input :starts_at, as: :datetime %>
+  <%= f.input :ends_at, as: :datetime %>
+  <%= f.association :venue %>
+  <%= f.button :submit %>
+<% end %>
