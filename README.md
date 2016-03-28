@@ -4,11 +4,11 @@
 
 Submitted by: **Minh Dinh**
 
-Time spent: **X** hours
+Time spent: **17** hours
 
-URL: **Insert your Heroku URL here**
+URL: **https://coderticketminh.herokuapp.com**
 
-SimpleCov Test Coverage: **Insert percentage or link to report here**
+SimpleCov Test Coverage: **93.5%**
 
 ## User Stories
 
