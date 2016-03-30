@@ -23,12 +23,17 @@
       <td><%= event.published_at %></td>
       <td><%= event.venue.name %></td>
       <td>
-        <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-warning' %>
+        <%= link_to 'Show', event_path(event), class: 'btn btn-warning' %>
+        <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-warning' %><br><br>
+        
         <% if event.ticket_types.count > 0 %>
-          <%= link_to "Publish event", publish_event_path(event), method: :put, class: 'btn btn-primary' %>
-        <% else %>
-          <%= link_to "Create ticket types", new_event_ticket_type_path(event), class: 'btn btn-primary' %>
+          <% if event.published_at.nil? %>
+            <%= link_to "Publish event", publish_event_path(event), method: :put, class: 'btn btn-primary' %><br><br>
+          <% else %>
+            <%= link_to "Event published", '#disabled', class: 'btn btn-primary disabled' %><br><br>
+          <% end %>
         <% end %>
+        <%= link_to "Create ticket types", new_event_ticket_type_path(event), class: 'btn btn-primary' %>
       </td>
       </tr>
     <% end %>
