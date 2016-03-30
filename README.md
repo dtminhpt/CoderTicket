@@ -13,7 +13,13 @@ SimpleCov Test Coverage: **93.5%**
 ## User Stories
 
 The following **required** functionality is complete:
+## Video Walkthrough 
 
+Here's a walkthrough of implemented user stories:
+
+![Video Walkthrough](coderticket.gif)
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 * [x] 10 model tests
 * [x] 2 route tests
 * [x] 2 controller tests
